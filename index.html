@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>controlling users</title>
+</head>
+<body ng-app="myApp">
+  <div class="container" ng-controller="usersController">
+    <h2>controlling users</h2>
+    <div>
+      <div>
+        First Name:
+        <input type="text" ng-model="firstName">
+      </div>
+
+      <div>
+        Last Name:
+        <input type="text" ng-model="lastName">
+      </div>
+      <div>
+        Favorite Language:
+        <input type="text" ng-model="language">
+      </div>
+      <button ng-click="createUser()">Create User</button>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Fav Language</th>
+            <th>Actions</th>
+            <th>CreatedAt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="u in userList">
+            <th>{{ u.firstName }}</th>
+            <th>{{ u.lastName }}</th>
+            <th>{{ u.language }}</th>
+            <th><button ng-click="delete(u)">Delete</button></th>
+            <th>{{ u.createdAt | date : 'medium' }}</th>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</body>
+<script src="./bower_components/lodash/lodash.js"></script>
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./main.js"></script>
+</html>
